@@ -4,14 +4,14 @@ import katakana from "@data/katakana.json"
 
 export type AskFunction = (prompt: string) => Promise<string>;
 
-export function readKatakana(index: number): string[] {
+export function readRandomJsonData(index: number): string[] {
     const randomNumber = Math.floor(Math.random() * 100);
     const katakanaArray = katakana[index];
     const result = [katakanaArray[randomNumber %2], katakanaArray[(randomNumber+1) %2]];
     return result;
 }
 
-export async function promptUserForCharacter(ask: AskFunction, caracterShown : string, expectedAnswer : string): Promise<boolean> {
+export async function promptUserForInput(ask: AskFunction, caracterShown : string, expectedAnswer : string): Promise<boolean> {
     console.log(`Please input the matching character for: ${caracterShown}`);
     const userInput = await ask("Your answer: ");
     return userInput.trim().toLowerCase() === expectedAnswer.trim().toLowerCase();

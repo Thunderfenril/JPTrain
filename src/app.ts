@@ -5,6 +5,20 @@ import * as hiraganaQuizz from "./hiraganaPart";
 import katakana from "@data/katakana.json"
 import * as katakanaQuizz from "./katakanaPart";
 
+const studySet = {
+  hiragana: {
+    main: hiragana,
+    quiz: hiraganaQuizz
+  },
+
+  katakana: {
+    main: katakana,
+    quiz: katakanaQuizz
+  }
+}
+
+let choiceType: keyof typeof studySet = "hiragana";
+
 const rl = readline.createInterface({
   input: process.stdin,
   output: process.stdout
@@ -17,21 +31,27 @@ function askQuestion(query: string): Promise<string> {
 }
 
 export async function main() : Promise<void> {
-    console.log("What do you wish to do ?\n1) Review Hiragana\n2) Review Katagana\n3) Review Kanji");
+    console.log("What do you wish to do ?\n1) Review Hiragana\n2) Review Katagana\n3) Review kana words\n4) Review Kanji");
 
     while(true) {
-    const choicemainmenu = await askQuestion("Choose an option (1-3): ");
+    const choicemainmenu = await askQuestion("Choose an option (1-4): ");
 
     switch (choicemainmenu.trim()) {
       case '1':
-        await hiraganaPart();
+        choiceType = "hiragana";
+        await quizzPart();
         rl.close();
         return;
       case '2':
-        await katakanaPart();
+        choiceType = "katakana";
+        await quizzPart();
         rl.close();
         return;
       case '3':
+        console.log("Kana words WIP");
+        rl.close();
+        return;
+      case '4':
         console.log("Kanji WIP");
         rl.close();
         return;
@@ -42,59 +62,21 @@ export async function main() : Promise<void> {
     }
 }
 
-async function hiraganaPart() : Promise<void> {
-
+async function quizzPart() : Promise<void> {
   console.clear();
 
-  console.log("1) Review a random hiragana.\n2) Review several hiragana at random.\n3) Full review.\n4) Exit.");
+  console.log(`1) Review a random ${choiceType}.\n2) Review several ${choiceType} randomly.\n3) Full review.\n4) Exit.`);
   while(true) {
-    const choiceHiragana = await askQuestion("Choose an option (1-3): ");
+    const choicequizz = await askQuestion("Choose an option (1-3): ");
 
 
-    switch(choiceHiragana.trim()) {
+    switch(choicequizz.trim()) {
       case '1':
         console.clear();
-        const hiraganaLength = hiragana.length;
-        const randomIndex = Math.floor(Math.random() * (hiraganaLength - 1 + 1) + 1);
-        const question = hiraganaQuizz.readHiragana(randomIndex);
-        const result = await hiraganaQuizz.promptUserForCharacter(askQuestion, question[0], question[1]);
-        announceResult(result, question[1]);
-        return;
-      case '2':
-        console.clear();
-        console.log("WIP");
-        break;
-      case '3':
-        console.clear();
-        console.log("WIP");
-        break;
-      case '4':
-        console.clear();
-        rl.close();
-        return;
-      default:
-        console.log("Invalid option. Please try again.\n");
-        break;
-    }
-  }
-}
-
-async function katakanaPart() : Promise<void> {
-
-  console.clear();
-
-  console.log("1) Review a random katakana.\n2) Review several katakana at random.\n3) Full review.\n4) Exit.");
-  while(true) {
-    const choiceKatakana = await askQuestion("Choose an option (1-3): ");
-
-
-    switch(choiceKatakana.trim()) {
-      case '1':
-        console.clear();
-        const katakanaLength = katakana.length;
-        const randomIndex = Math.floor(Math.random() * (katakanaLength - 1 + 1) + 1);
-        const question = katakanaQuizz.readKatakana(randomIndex);
-        const result = await katakanaQuizz.promptUserForCharacter(askQuestion, question[0], question[1]);
+        const jsonLength = studySet[choiceType].main.length;
+        const randomIndex = Math.floor(Math.random() * (jsonLength - 1 + 1) + 1);
+        const question = studySet[choiceType].quiz.readRandomJsonData(randomIndex);
+        const result = await studySet[choiceType].quiz.promptUserForInput(askQuestion, question[0], question[1]);
         announceResult(result, question[1]);
         return;
       case '2':
