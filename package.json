@@ -3,8 +3,10 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test" : "jest",
-    "dev": "nodemon src/app.ts"
+    "test": "jest",
+    "dev": "nodemon src/app.ts",
+    "dev2": "nodemon --watch src --ext ts,json --exec ts-node -r tsconfig-paths/register src/app.ts"
+
   },
   "keywords": [],
   "author": "",
