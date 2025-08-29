@@ -11,21 +11,24 @@ export function readRandomJsonData(index: number): string[] {
     return result;
 }
 
-export async function promptUserForInput(ask: AskFunction, caracterShown : string, expectedAnswer : string): Promise<boolean> {
-    console.log(`Please input the matching character for: ${caracterShown}`);
-    const userInput = await ask("Your answer: ");
-    return userInput.trim().toLowerCase() === expectedAnswer.trim().toLowerCase();
-}
+export async function promptUserForInput(ask: AskFunction, caracterShown : string, expectedAnswers: string | string[]): Promise<boolean> {
+    console.log(`Please input the matching answer(s) for: ${caracterShown}`);
 
-export function askQuestion(prompt: string): Promise<string> {
-  const rl = readline.createInterface({
-    input: process.stdin,
-    output: process.stdout,
-  });
-  return new Promise((resolve) => {
-    rl.question(prompt, (answer) => {
-      rl.close();
-      resolve(answer);
-    });
-  });
+    console.log(expectedAnswers)
+    const answers = Array.isArray(expectedAnswers)
+    ? expectedAnswers
+    : [expectedAnswers];
+    console.log(answers)
+
+    const userInputs: string[] = [];
+    for (let i = 0; i < answers.length; i++) {
+        const input = await ask(
+        answers.length > 1 ? `Answer ${i + 1}: ` : "Your answer: "
+        );
+        userInputs.push(input.trim().toLowerCase());
+    }
+
+    const normalizedExpected = answers.map(a => a.trim().toLowerCase());
+
+     return userInputs.every((ans, i) => ans === normalizedExpected[i]);
 }
