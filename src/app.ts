@@ -4,6 +4,8 @@ import hiragana from "@data/hiragana.json"
 import * as hiraganaQuizz from "./hiraganaPart";
 import katakana from "@data/katakana.json"
 import * as katakanaQuizz from "./katakanaPart";
+import kana from "@data/kana.json"
+import * as kanaQuizz from "./kanaWordPart";
 
 const studySet = {
   hiragana: {
@@ -14,6 +16,11 @@ const studySet = {
   katakana: {
     main: katakana,
     quiz: katakanaQuizz
+  },
+
+  kana: {
+    main: kana,
+    quiz: kanaQuizz
   }
 }
 
@@ -48,7 +55,8 @@ export async function main() : Promise<void> {
         rl.close();
         return;
       case '3':
-        console.log("Kana words WIP");
+        choiceType = "kana";
+        await quizzPart();
         rl.close();
         return;
       case '4':
@@ -76,8 +84,10 @@ async function quizzPart() : Promise<void> {
         const jsonLength = studySet[choiceType].main.length;
         const randomIndex = Math.floor(Math.random() * (jsonLength - 1 + 1) + 1);
         const question = studySet[choiceType].quiz.readRandomJsonData(randomIndex);
-        const result = await studySet[choiceType].quiz.promptUserForInput(askQuestion, question[0], question[1]);
-        announceResult(result, question[1]);
+        const [_, ...answerExpected] = question;
+        console.log(answerExpected)
+        const result = await studySet[choiceType].quiz.promptUserForInput(askQuestion, question[0], answerExpected);
+        announceResult(result, answerExpected);
         return;
       case '2':
         console.clear();
@@ -98,8 +108,8 @@ async function quizzPart() : Promise<void> {
   }
 }
 
-function announceResult(res : boolean, answer : string) : void {
-  const text = res ? "Good answer." : `Wrong, the answer was "${answer}"`;
+function announceResult(res : boolean, answers : string[]) : void {
+  const text = res ? "Good answer." : `Wrong, the answer was "${answers.join(" / ")}"`;
   console.log(text);
 }
 main()

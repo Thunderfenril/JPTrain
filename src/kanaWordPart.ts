@@ -1,13 +1,14 @@
 import readline from "readline";
 
-import katakana from "@data/katakana.json"
+import kana from "@data/kana.json"
 
 export type AskFunction = (prompt: string) => Promise<string>;
 
 export function readRandomJsonData(index: number): string[] {
     const randomNumber = Math.floor(Math.random() * 100);
-    const katakanaArray = katakana[index];
-    const result = [katakanaArray[randomNumber %2], katakanaArray[(randomNumber+1) %2]];
+    const katakanaArray = kana[index];
+    const result = [katakanaArray[randomNumber %3], katakanaArray[(randomNumber+1) %3], katakanaArray[(randomNumber+2) %3]];
+
     return result;
 }
 
