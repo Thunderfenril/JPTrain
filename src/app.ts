@@ -6,6 +6,8 @@ import katakana from "@data/katakana.json"
 import * as katakanaQuizz from "./katakanaPart";
 import kana from "@data/kana.json"
 import * as kanaQuizz from "./kanaWordPart";
+import kanji from "@data/kanji.json"
+import * as kanjiQuizz from "./kanjiPart";
 
 const studySet = {
   hiragana: {
@@ -21,10 +23,16 @@ const studySet = {
   kana: {
     main: kana,
     quiz: kanaQuizz
+  },
+
+  kanji: {
+    main: kanji,
+    quiz: kanjiQuizz
   }
 }
 
 let choiceType: keyof typeof studySet = "hiragana";
+let kanjiDefinition: string|null = "";
 
 const rl = readline.createInterface({
   input: process.stdin,
@@ -60,7 +68,8 @@ export async function main() : Promise<void> {
         rl.close();
         return;
       case '4':
-        console.log("Kanji WIP");
+        choiceType = "kanji";
+        await quizzPart();
         rl.close();
         return;
       default:
@@ -83,9 +92,13 @@ async function quizzPart() : Promise<void> {
         console.clear();
         const jsonLength = studySet[choiceType].main.length;
         const randomIndex = Math.floor(Math.random() * (jsonLength - 1 + 1) + 1);
-        const question = studySet[choiceType].quiz.readRandomJsonData(randomIndex);
+        var question = studySet[choiceType].quiz.readRandomJsonData(randomIndex);
+
+        if(choiceType == "kanji") {
+          removeLongestElement(question);
+        }
         const [_, ...answerExpected] = question;
-        console.log(answerExpected)
+
         const result = await studySet[choiceType].quiz.promptUserForInput(askQuestion, question[0], answerExpected);
         announceResult(result, answerExpected);
         return;
@@ -109,7 +122,35 @@ async function quizzPart() : Promise<void> {
 }
 
 function announceResult(res : boolean, answers : string[]) : void {
-  const text = res ? "Good answer." : `Wrong, the answer was "${answers.join(" / ")}"`;
+  // const text = res ? "Good answer." : `Wrong, the answer was "${answers.join(" / ")}"`;
+  let text : string|null = "";
+  if(res) {
+    text = "Good Answer.";
+
+    if(choiceType == "kanji" && kanjiDefinition != "") {
+      text += `\nHere is a definition: ${kanjiDefinition}`
+    }
+  } else {
+    text = `Wrong, the answer was "${answers.join(" / ")}"`;
+  }
+
   console.log(text);
+}
+
+function removeLongestElement(arr : string[]) : string[] {
+
+  if(arr.length === 0) {
+    return arr;
+  }
+
+  const maxLength = Math.max(...arr.map(s => s.length));
+  const index = arr.findIndex(s => s.length === maxLength);
+
+  if (index !== -1 && index != 0) {
+    kanjiDefinition = arr[index];
+    arr.splice(index, 1);
+  }
+
+  return arr;
 }
 main()
