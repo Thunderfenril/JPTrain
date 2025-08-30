@@ -1,13 +1,12 @@
-import readline from "readline";
-
-import katakana from "@data/katakana.json"
+import kanji from "@data/kanji.json"
 
 export type AskFunction = (prompt: string) => Promise<string>;
 
 export function readRandomJsonData(index: number): string[] {
     const randomNumber = Math.floor(Math.random() * 100);
-    const katakanaArray = katakana[index];
-    const result = [katakanaArray[randomNumber %2], katakanaArray[(randomNumber+1) %2]];
+    const kanjiArray = kanji[index];
+    const result = [kanjiArray[randomNumber %5], kanjiArray[(randomNumber+1) %5], kanjiArray[(randomNumber+2) %5], kanjiArray[(randomNumber+3) %5], kanjiArray[(randomNumber+4) %5]];
+
     return result;
 }
 
