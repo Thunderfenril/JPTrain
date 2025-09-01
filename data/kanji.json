@@ -1,4 +1,6 @@
 [
     ["kanji", "kana", "roumanji", "traduction", "description"],
-    ["私", "わたし", "watashi", "Je", "Forme polie et générale de se désigner. \"わたくし\" est plus formel et \"あたし\" est la forme féminine"]
+    ["私", "わたし", "watashi", "Je", "Forme polie et générale de se désigner. \"わたくし\" est plus formel et \"あたし\" est la forme féminine"],
+    ["彼", "かれ", "kare", "il", "il/lui"],
+    ["好き", "すき", "suik", "aimer", "Aimer/Apprécier quelque chose"]
 ]
