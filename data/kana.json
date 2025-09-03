@@ -35,5 +35,8 @@
     ["いろ", "iro", "couleur"],
     ["あなた", "anata", "tu"],
     ["さん", "san", "honorific neutre"],
-    ["いい", "ii", "bon"]
+    ["いい", "ii", "bon"],
+    ["これ", "kore", "ceci"],
+    ["それ", "sore", "cela"],
+    ["あれ", "are", "celui-là"]
 ]
