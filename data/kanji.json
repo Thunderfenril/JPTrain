@@ -6,5 +6,8 @@
     ["人", "ひと", "hito", "personne", "Désigne quelqu'un"],
     ["人", "じん", "jin", "personne de", "Suffixe à ajouter après un nom de pays pour indiquer la nationalité"],
     ["日本語", "にほんご", "nihongo", "langue japonaise", "Ne pas confondre avec \"日本\" qui désigne le pays"],
-    ["勉強", "べんきょう", "benkyou", "étudier", ""]
+    ["勉強", "べんきょう", "benkyou", "étudier", ""],
+    ["本", "ほん", "hon", "livre", ""],
+    ["何", "なに", "nani", "quoi", ""],
+    ["何", "なん", "nan", "quoi", ""]
 ]
