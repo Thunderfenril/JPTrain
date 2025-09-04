@@ -32,5 +32,14 @@
     ["ねる", "neru", "dormir"],
     ["くわ", "kuwa", "mûrier"],
     ["ぬの", "nuno", "tissu"],
-    ["いろ", "iro", "couleur"]
+    ["いろ", "iro", "couleur"],
+    ["あなた", "anata", "tu"],
+    ["さん", "san", "honorific neutre"],
+    ["いい", "ii", "bon"],
+    ["これ", "kore", "ceci"],
+    ["それ", "sore", "cela"],
+    ["あれ", "are", "celui-là"],
+    ["どれ", "dore", "lequel"],
+    ["いる", "iru", "avoir", "Pour les choses animé (humain, animaux, etc)"],
+    ["ある", "qre", "avoir", "Pour les choses non animé (objetc, etc)"]
 ]

@@ -1,4 +1,15 @@
 [
     ["kanji", "kana", "roumanji", "traduction", "description"],
-    ["私", "わたし", "watashi", "Je", "Forme polie et générale de se désigner. \"わたくし\" est plus formel et \"あたし\" est la forme féminine"]
+    ["私", "わたし", "watashi", "Je", "Forme polie et générale de se désigner. \"わたくし\" est plus formel et \"あたし\" est la forme féminine"],
+    ["彼", "かれ", "kare", "il", "il/lui"],
+    ["好き", "すき", "suki", "aimer", "Aimer/Apprécier quelque chose"],
+    ["人", "ひと", "hito", "personne", "Désigne quelqu'un"],
+    ["人", "じん", "jin", "personne de", "Suffixe à ajouter après un nom de pays pour indiquer la nationalité"],
+    ["日本語", "にほんご", "nihongo", "langue japonaise", "Ne pas confondre avec \"日本\" qui désigne le pays"],
+    ["勉強", "べんきょう", "benkyou", "étudier", ""],
+    ["本", "ほん", "hon", "livre", ""],
+    ["何", "なに", "nani", "quoi", ""],
+    ["何", "なん", "nan", "quoi", ""],
+    ["兄", "あに", "ani", "Grand-frère", ""],
+    ["毎日", "まいにち", "mainichi", "Tout les jours", ""]
 ]
