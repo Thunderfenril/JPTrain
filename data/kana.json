@@ -38,5 +38,8 @@
     ["いい", "ii", "bon"],
     ["これ", "kore", "ceci"],
     ["それ", "sore", "cela"],
-    ["あれ", "are", "celui-là"]
+    ["あれ", "are", "celui-là"],
+    ["どれ", "dore", "lequel"],
+    ["いる", "iru", "avoir", "Pour les choses animé (humain, animaux, etc)"],
+    ["ある", "qre", "avoir", "Pour les choses non animé (objetc, etc)"]
 ]
