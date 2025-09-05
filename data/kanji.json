@@ -11,5 +11,8 @@
     ["何", "なに", "nani", "quoi", ""],
     ["何", "なん", "nan", "quoi", ""],
     ["兄", "あに", "ani", "Grand-frère", ""],
-    ["毎日", "まいにち", "mainichi", "Tout les jours", ""]
+    ["毎日", "まいにち", "mainichi", "Tout les jours", ""],
+    ["今", "いま", "ima", "maintenant", ""],
+    ["時間", "じかん", "jikan", "temps", "heure"],
+    ["無い", "ない", "nai", "aucun", ""]
 ]

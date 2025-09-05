@@ -41,5 +41,7 @@
     ["あれ", "are", "celui-là"],
     ["どれ", "dore", "lequel"],
     ["いる", "iru", "avoir", "Pour les choses animé (humain, animaux, etc)"],
-    ["ある", "qre", "avoir", "Pour les choses non animé (objetc, etc)"]
+    ["ある", "aru", "avoir", "Pour les choses non animé (objetc, etc)"],
+    ["あまり", "amari", "pas beaucoup"],
+    ["この", "kono", "ce"]
 ]
