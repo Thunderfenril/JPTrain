@@ -43,5 +43,14 @@
     ["いる", "iru", "avoir", "Pour les choses animé (humain, animaux, etc)"],
     ["ある", "aru", "avoir", "Pour les choses non animé (objetc, etc)"],
     ["あまり", "amari", "pas beaucoup"],
-    ["この", "kono", "ce"]
+    ["この", "kono", "ce"],
+    ["その", "sono", "celui-là"],
+    ["あの", "ano", "celui-là", "Implique une distance, que l'on pointe l'objet"],
+    ["どの", "dono", "lequel"],
+    ["する", "suru", "Faire"],
+    ["なる", "naru", "devenir", "Beaucoup plus de signification. Saloperie de mot"],
+    ["ください", "kudasai", "S'il vous plait", "Formule de politesse pour demander à quelqu'un de faire quelque chose pour nous."],
+    ["ここ", "koko", "ici"],
+    ["そこ", "soko", "là", "Proche de celui à qui on parle"],
+    ["あそこ", "asoko", "par là bas"]
 ]
