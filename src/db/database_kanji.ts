@@ -1,6 +1,6 @@
 import { integer, pgTable, varchar } from "drizzle-orm/pg-core";
 
-export const usersTable = pgTable("katakana", {
+export const kanjiTable = pgTable("katakana", {
   id: integer().primaryKey().generatedAlwaysAsIdentity(),
   kanji: varchar({ length: 255 }).notNull(),
   kunyomi: varchar({ length: 255 }),
