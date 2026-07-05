@@ -1,6 +1,6 @@
 import { integer, pgTable, varchar } from "drizzle-orm/pg-core";
 
-export const wordsTable = pgTable("katakana", {
+export const wordsTable = pgTable("words", {
   id: integer().primaryKey().generatedAlwaysAsIdentity(),
   mots: varchar({ length: 255 }).notNull(),
   traduction: varchar({ length: 255 }).notNull(),

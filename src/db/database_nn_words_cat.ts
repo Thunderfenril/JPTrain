@@ -1,9 +1,9 @@
 import { integer, pgTable, varchar } from "drizzle-orm/pg-core";
-import { wordsTable } from "./database_mots";
+import { wordsTable } from "./database_words";
 import { categoryTable } from "./database_category";
 
-export const usersTable = pgTable("katakana", {
+export const nnWordsCatTable = pgTable("nn_words_cat", {
   id: integer().primaryKey().generatedAlwaysAsIdentity(),
-  idKanji: integer().references(() => wordsTable.id),
+  idWords: integer().references(() => wordsTable.id),
   idCat: integer().references(() => categoryTable.id)
 });

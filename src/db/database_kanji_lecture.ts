@@ -1,9 +1,9 @@
 import { integer, pgTable, varchar } from "drizzle-orm/pg-core";
 import { kanjiTable } from "./database_kanji";
-import { categoryTable } from "./database_category";
 
-export const nnKanjiCatTable = pgTable("nn_kanji_cat", {
+export const kanjiLectureTable = pgTable("kanji_lecture", {
   id: integer().primaryKey().generatedAlwaysAsIdentity(),
   idKanji: integer().references(() => kanjiTable.id),
-  idCat: integer().references(() => categoryTable.id)
+  type: varchar({length: 10}).notNull(),
+  lecture: varchar({length:255}).notNull()
 });
